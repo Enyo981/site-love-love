@@ -345,7 +345,6 @@
 </div>
 
 <div id="conteudo">
-  <!-- Player de música personalizado -->
   <div id="player-container">
     <div id="player-controls">
       <button id="play-btn">
@@ -363,8 +362,7 @@
     </div>
   </div>
   
-  <!-- Elemento de áudio oculto -->
-  <audio id="musica" loop>
+  <audio id="musica" loop preload="auto">
     <source src="audio/musica-site.mp3" type="audio/mpeg">
   </audio>
   
@@ -503,19 +501,11 @@
       gerarPontosGaleria(); 
       floatingHeartsInterval = setInterval(criarCoracao, 600);
 
-      // Iniciar música automaticamente quando o usuário clicar
-      musica.play().then(() => {
-        playBtn.classList.add('playing');
-        musicaIniciada = true;
-      }).catch(err => {
-        console.log("Erro ao tocar automaticamente:", err);
-        // Se falhar, mostra mensagem para o usuário
-        playBtn.style.border = "2px solid #ff6b6b";
-      });
+      // MUDANÇA 2: O bloco 'musica.play()' foi REMOVIDO daqui para evitar conflitos
+      
     }, 500);
   });
 
-  // Fallback: se a música não iniciar automaticamente, o usuário pode clicar no botão play
   musica.addEventListener('canplaythrough', () => {
     console.log("Música carregada e pronta para tocar");
   });
@@ -529,4 +519,3 @@
 
 </body>
 </html>
-
