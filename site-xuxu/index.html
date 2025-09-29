@@ -76,12 +76,12 @@
     box-sizing: border-box;
   }
 
-  /* Player de música personalizado */
+  /* Player de música personalizado (VERSÃO MAIOR E AJUSTADA) */
   #player-container {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px; /* Aumentado de 300px para 350px */
     margin: 0 auto 30px auto;
-    padding: 15px;
+    padding: 18px; /* Aumentado de 15px para 18px */
     background: linear-gradient(135deg, rgba(160, 95, 232, 0.2), rgba(28, 126, 252, 0.2));
     border-radius: 20px;
     box-shadow: 
@@ -97,23 +97,25 @@
   #player-controls {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 15px; /* Aumentado de 12px para 15px */
+    flex-grow: 1;
+    width: 0;
   }
 
-  /* NOVO ESTILO PARA A IMAGEM DO ÁLBUM */
   #album-art {
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
+    width: 65px; /* Aumentado de 50px para 65px */
+    height: 65px; /* Aumentado de 50px para 65px */
+    border-radius: 10px;
     object-fit: cover;
+    flex-shrink: 0;
   }
 
   #play-btn {
     background: linear-gradient(90deg, #1c7efc, #a05fe8);
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px; /* Aumentado de 45px para 50px */
+    height: 50px; /* Aumentado de 45px para 50px */
     color: white;
     cursor: pointer;
     display: flex;
@@ -121,6 +123,7 @@
     justify-content: center;
     box-shadow: 0 0 15px rgba(28, 126, 252, 0.7);
     transition: all 0.3s ease;
+    flex-shrink: 0;
   }
 
   #play-btn:hover {
@@ -147,25 +150,30 @@
   #song-info {
     text-align: left;
     flex-grow: 1;
+    width: 0;
+    overflow: hidden;
   }
 
   #song-title {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px; /* Aumentado de 14px para 16px */
+    font-weight: 700;
     margin: 0;
     color: #e0e0e0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px; /* Aumentado de 3px para 4px */
   }
 
   #song-artist {
-    font-size: 12px;
+    font-size: 13px; /* Aumentado de 12px para 13px */
     color: #bbb;
     margin: 0;
   }
 
-  /* NOVO ESTILO PARA A DURAÇÃO DA MÚSICA */
   #song-duration {
-    font-size: 12px;
-    color: #a0a0a0;
+    font-size: 13px; /* Aumentado de 12px para 13px */
+    color: #888;
     margin: 0;
   }
 
@@ -176,7 +184,7 @@
   }
 
   #volume-slider {
-    width: 80px;
+    width: 100px; /* Aumentado de 80px para 100px */
     -webkit-appearance: none;
     height: 4px;
     border-radius: 2px;
@@ -362,7 +370,7 @@
 <div id="conteudo">
   <div id="player-container">
     <div id="player-controls">
-      <img id="album-art" src="https://miro.medium.com/v2/resize:fit:627/1*_w88EP9CeYPCbkaLO981VA.png" alt="Capa do Álbum">
+      <img id="album-art" src="URL_DA_IMAGEM_DO_ALBUM_AQUI" alt="Capa do Álbum">
       <button id="play-btn">
         <span class="play-icon">▶</span>
         <span class="pause-icon">❚❚</span>
@@ -417,7 +425,6 @@
   const musica = document.getElementById('musica');
   const playBtn = document.getElementById('play-btn');
   const volumeSlider = document.getElementById('volume-slider');
-  // NOVA CONSTANTE
   const songDuration = document.getElementById('song-duration');
 
   let fotoAtual = 0;
@@ -483,7 +490,6 @@
     }, 4000);
   }
   
-  // NOVA FUNÇÃO PARA FORMATAR O TEMPO
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
@@ -543,7 +549,6 @@
     console.log("Música carregada e pronta para tocar");
   });
   
-  // NOVO EVENTO PARA PEGAR A DURAÇÃO DA MÚSICA
   musica.addEventListener('loadedmetadata', () => {
     const totalTime = formatTime(musica.duration);
     songDuration.textContent = totalTime;
