@@ -501,7 +501,15 @@
       gerarPontosGaleria(); 
       floatingHeartsInterval = setInterval(criarCoracao, 600);
 
-      // MUDANÇA 2: O bloco 'musica.play()' foi REMOVIDO daqui para evitar conflitos
+      // --- ALTERAÇÃO APLICADA AQUI ---
+      // Tenta tocar a música automaticamente.
+      musica.play().then(() => {
+        // Se tocar com sucesso, atualiza o ícone do player para 'pause'.
+        playBtn.classList.add('playing');
+      }).catch(err => {
+        // Se falhar, apenas exibe um erro no console. O usuário ainda pode clicar no play.
+        console.error("Falha ao iniciar a música automaticamente:", err);
+      });
       
     }, 500);
   });
