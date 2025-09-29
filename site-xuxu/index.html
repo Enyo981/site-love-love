@@ -100,6 +100,14 @@
     gap: 15px;
   }
 
+  /* NOVO ESTILO PARA A IMAGEM DO ÁLBUM */
+  #album-art {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
   #play-btn {
     background: linear-gradient(90deg, #1c7efc, #a05fe8);
     border: none;
@@ -151,6 +159,13 @@
   #song-artist {
     font-size: 12px;
     color: #bbb;
+    margin: 0;
+  }
+
+  /* NOVO ESTILO PARA A DURAÇÃO DA MÚSICA */
+  #song-duration {
+    font-size: 12px;
+    color: #a0a0a0;
     margin: 0;
   }
 
@@ -347,13 +362,17 @@
 <div id="conteudo">
   <div id="player-container">
     <div id="player-controls">
+      <img id="album-art" src="URL_DA_IMAGEM_DO_ALBUM_AQUI" alt="Capa do Álbum">
       <button id="play-btn">
         <span class="play-icon">▶</span>
         <span class="pause-icon">❚❚</span>
       </button>
       <div id="song-info">
         <p id="song-title">Partilhar</p>
-        <p id="song-artist">Rubel</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p id="song-artist">Rubel</p>
+            <p id="song-duration">0:00</p>
+        </div>
       </div>
     </div>
     <div id="volume-control">
@@ -398,6 +417,8 @@
   const musica = document.getElementById('musica');
   const playBtn = document.getElementById('play-btn');
   const volumeSlider = document.getElementById('volume-slider');
+  // NOVA CONSTANTE
+  const songDuration = document.getElementById('song-duration');
 
   let fotoAtual = 0;
   let floatingHeartsInterval;
@@ -461,6 +482,14 @@
       heart.remove();
     }, 4000);
   }
+  
+  // NOVA FUNÇÃO PARA FORMATAR O TEMPO
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    const paddedSeconds = remainingSeconds.toString().padStart(2, '0');
+    return `${minutes}:${paddedSeconds}`;
+  }
 
   // Controles do player de música
   playBtn.addEventListener('click', () => {
@@ -501,13 +530,9 @@
       gerarPontosGaleria(); 
       floatingHeartsInterval = setInterval(criarCoracao, 600);
 
-      // --- ALTERAÇÃO APLICADA AQUI ---
-      // Tenta tocar a música automaticamente.
       musica.play().then(() => {
-        // Se tocar com sucesso, atualiza o ícone do player para 'pause'.
         playBtn.classList.add('playing');
       }).catch(err => {
-        // Se falhar, apenas exibe um erro no console. O usuário ainda pode clicar no play.
         console.error("Falha ao iniciar a música automaticamente:", err);
       });
       
@@ -516,6 +541,12 @@
 
   musica.addEventListener('canplaythrough', () => {
     console.log("Música carregada e pronta para tocar");
+  });
+  
+  // NOVO EVENTO PARA PEGAR A DURAÇÃO DA MÚSICA
+  musica.addEventListener('loadedmetadata', () => {
+    const totalTime = formatTime(musica.duration);
+    songDuration.textContent = totalTime;
   });
 
   musica.addEventListener('error', (e) => {
