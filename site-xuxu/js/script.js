@@ -76,9 +76,10 @@ function criarCoracao() {
 }
 
 // =================================================================
-// 4. INICIALIZAÇÃO E EVENT LISTENERS (DA PÁGINA)
+// 4. INICIALIZAÇÃO E EVENT LISTENERS (PÁGINA)
 // =================================================================
 btnClique.addEventListener('click', () => {
+  // Faz o botão desaparecer e o conteúdo aparecer
   containerBotao.style.opacity = '0';
   setTimeout(() => {
     containerBotao.style.display = 'none';
@@ -86,38 +87,41 @@ btnClique.addEventListener('click', () => {
     setTimeout(() => {
       conteudo.style.opacity = '1';
     }, 100);
+
+    // Inicia todas as funcionalidades da página
     atualizarTempo();
     tempoInterval = setInterval(atualizarTempo, 1000);
     setInterval(proximaFoto, 5000);
     gerarPontosGaleria(); 
     floatingHeartsInterval = setInterval(criarCoracao, 600);
+
+    // =================================================================
+    // 5. FUNCIONALIDADE DO PLAYER DE MÚSICA (AGORA ATIVADO APÓS O CLIQUE)
+    // =================================================================
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.querySelector('.play-pause');
+
+    // Função para tocar ou pausar a música
+    function togglePlayPause() {
+        if (audio.paused) {
+            audio.play();
+            // Troca o ícone para 'pause'
+            playPauseBtn.classList.remove('fa-play');
+            playPauseBtn.classList.add('fa-pause');
+        } else {
+            audio.pause();
+            // Troca o ícone de volta para 'play'
+            playPauseBtn.classList.remove('fa-pause');
+            playPauseBtn.classList.add('fa-play');
+        }
+    }
+
+    // Adiciona o 'escutador de evento' ao botão
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', togglePlayPause);
+    }
+    // Toca a música automaticamente ao clicar no botão principal
+    togglePlayPause();
+
   }, 500);
 });
-
-// =================================================================
-// 5. FUNCIONALIDADE DO NOVO PLAYER DE MÚSICA
-// =================================================================
-
-// Seleciona os novos elementos: o áudio e o botão de play/pause
-const audio = document.getElementById('audio-player');
-const playPauseBtn = document.querySelector('.play-pause');
-
-// Função para tocar ou pausar a música
-function togglePlayPause() {
-    if (audio.paused) {
-        audio.play();
-        // Troca o ícone para 'pause'
-        playPauseBtn.classList.remove('fa-play');
-        playPauseBtn.classList.add('fa-pause');
-    } else {
-        audio.pause();
-        // Troca o ícone de volta para 'play'
-        playPauseBtn.classList.remove('fa-pause');
-        playPauseBtn.classList.add('fa-play');
-    }
-}
-
-// Adiciona o 'escutador de evento' ao botão, se ele existir
-if (playPauseBtn) {
-    playPauseBtn.addEventListener('click', togglePlayPause);
-}
