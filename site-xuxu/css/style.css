@@ -175,6 +175,7 @@ body {
 #volume-slider {
   width: 100px;
   -webkit-appearance: none;
+  appearance: none;
   height: 4px;
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.2);
