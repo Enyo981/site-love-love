@@ -1,7 +1,4 @@
-/* Importa a fonte do novo player */
-@import url(//db.onlinewebfonts.com/c/860c3ec7bbc5da3e97233ccecafe512e?family=Circular+Std+Book);
-
-/* Estilos Gerais (mantidos do seu projeto original) */
+/* Estilos Gerais */
 body {
   background-color: #0d0d1f;
   color: white;
@@ -72,162 +69,7 @@ body {
   100% { transform: scale(1); }
 }
 
-
-/* ESTILOS DO NOVO PLAYER DE MÚSICA */
-.music-player * {
-    font-family: "circular std book", sans-serif;
-}
-
-.music-player {
-    --primary-color: #ddd;
-    --secondary-color: #999;
-    --green-color: #2d5;
-    --padding: 1em;
-    background-color: #222; /* Fundo mais escuro para destaque */
-    border-radius: 10px; /* Bordas arredondadas */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 7rem;
-    padding: var(--padding);
-    color: var(--primary-color);
-    margin-bottom: 30px; 
-}
-.music-player i{
-    color: var(--secondary-color);
-    cursor: pointer;
-}
-.music-player i:hover{
-    color: var(--primary-color);
-}
-.song-bar {
-    position: absolute;
-    left: var(--padding);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1.5rem;
-    width: 25%;
-}
-.song-infos {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-}
-.image-container {
-    --size: 4.5em;
-    flex-shrink: 0;
-    width: var(--size);
-    height: var(--size);
-}
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.song-description p {
-    margin: 0.2em;
-}
-.title,
-.artist {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-}
-.title:hover,
-.artist:hover {
-    text-decoration: underline;
-}
-.artist{
-    color: var(--secondary-color);
-}
-.icons{
-    display: flex;
-    gap: 1em;
-}
-.progress-controller{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5em;
-    color: var(--secondary-color);
-}
-.control-buttons{
-    display: flex;
-    align-items: center;
-    gap: 2em;
-}
-.play-pause{
-    display: inline-block;
-    padding: 1em;
-    background-color: var(--primary-color);
-    color: #111;
-    border-radius: 50%;
-}
-.play-pause:hover{
-    transform: scale(1.1);
-    color: #111;
-}
-.progress-container{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-}
-.progress-bar{
-    height: 4px;
-    border-radius: 10px;
-    width: 30%;
-    background-color: #ccc4;
-}
-.progress{
-    position: relative;
-    height: 100%;
-    width: 0%; /* Começa em 0 */
-    border-radius: 10px;
-    background-color: var(--secondary-color);
-}
-.progress-bar:hover .progress{
-    background-color: var(--green-color);
-}
-.progress-bar:hover .progress::after{
-    content: "";
-    position: absolute;
-    --size: 1em;
-    width: var(--size);
-    height: var(--size);
-    right: 0;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    transform: translate(50%, calc(2px - 50%));
-}
-.other-features{
-    position: absolute;
-    right: var(--padding);
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-}
-.volume-bar{
-    display: flex;
-    align-items: center;
-    gap: .7em;
-}
-.volume-bar .progress-bar{
-    width: 6em;
-}
-.volume-bar .progress-bar:hover .progress::after{
-    --size: .8em;
-}
-
-
-/* Estilos Originais (mantidos para o resto da página) */
+/* Galeria e outros estilos */
 #galeria-moldura {
   position: relative;
   max-width: 250px;
@@ -246,6 +88,7 @@ body {
   padding: 8px;
   box-sizing: border-box;
 }
+
 #galeria {
   width: 100%;
   height: 100%;
@@ -253,6 +96,7 @@ body {
   overflow: hidden;
   position: relative;
 }
+
 .foto {
   width: 100%;
   height: 100%;
@@ -263,14 +107,17 @@ body {
   top: 0;
   left: 0;
 }
+
 .foto.active {
   display: block;
   animation: fadeIn 0.7s ease;
 }
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
 #galeria-pontos {
     position: absolute;
     bottom: 15px;
@@ -292,6 +139,7 @@ body {
     background-color: #1c7efc;
     transform: scale(1.2);
 }
+
 #tempoAmor-titulo {
   margin-top: 15px;
   font-size: 24px;
@@ -299,6 +147,7 @@ body {
   color: #e0e0e0;
   text-shadow: 0 0 15px rgba(28, 126, 252, 0.4);
 }
+
 #tempoAmor-valor {
   font-size: 16px;
   font-weight: 500;
@@ -306,6 +155,7 @@ body {
   margin-top: 5px;
   line-height: 1.5;
 }
+
 #mensagem {
   margin-top: 30px;
   font-size: 14px;
@@ -321,6 +171,7 @@ body {
   position: relative;
   overflow: hidden;
 }
+
 #mensagem::before {
     content: '';
     position: absolute;
@@ -337,6 +188,7 @@ body {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
 #mensagem strong {
   color: #fff;
   font-weight: 700;
@@ -346,6 +198,7 @@ body {
     font-size: 18px;
     margin-left: 5px;
 }
+
 .floating-heart {
   position: fixed;
   color: #5d5d8e;
@@ -356,6 +209,7 @@ body {
   pointer-events: none;
   text-shadow: 0 0 8px rgba(93, 93, 142, 0.5);
 }
+
 @keyframes floatUp {
   0% {
     transform: translateY(0) scale(1);
