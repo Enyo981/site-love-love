@@ -74,8 +74,7 @@ body {
 
 
 /* ESTILOS DO NOVO PLAYER DE MÚSICA */
-* {
-    box-sizing: border-box;
+.music-player * {
     font-family: "circular std book", sans-serif;
 }
 
@@ -84,7 +83,8 @@ body {
     --secondary-color: #999;
     --green-color: #2d5;
     --padding: 1em;
-    background-color: #111;
+    background-color: #222; /* Fundo mais escuro para destaque */
+    border-radius: 10px; /* Bordas arredondadas */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,10 +92,11 @@ body {
     height: 7rem;
     padding: var(--padding);
     color: var(--primary-color);
-    margin-bottom: 30px; /* Adicionado para separar do conteúdo abaixo */
+    margin-bottom: 30px; 
 }
 .music-player i{
     color: var(--secondary-color);
+    cursor: pointer;
 }
 .music-player i:hover{
     color: var(--primary-color);
@@ -188,7 +189,7 @@ body {
 .progress{
     position: relative;
     height: 100%;
-    width: 30%;
+    width: 0%; /* Começa em 0 */
     border-radius: 10px;
     background-color: var(--secondary-color);
 }
@@ -245,7 +246,6 @@ body {
   padding: 8px;
   box-sizing: border-box;
 }
-
 #galeria {
   width: 100%;
   height: 100%;
@@ -253,7 +253,6 @@ body {
   overflow: hidden;
   position: relative;
 }
-
 .foto {
   width: 100%;
   height: 100%;
@@ -264,17 +263,14 @@ body {
   top: 0;
   left: 0;
 }
-
 .foto.active {
   display: block;
   animation: fadeIn 0.7s ease;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 #galeria-pontos {
     position: absolute;
     bottom: 15px;
@@ -296,7 +292,6 @@ body {
     background-color: #1c7efc;
     transform: scale(1.2);
 }
-
 #tempoAmor-titulo {
   margin-top: 15px;
   font-size: 24px;
@@ -304,7 +299,6 @@ body {
   color: #e0e0e0;
   text-shadow: 0 0 15px rgba(28, 126, 252, 0.4);
 }
-
 #tempoAmor-valor {
   font-size: 16px;
   font-weight: 500;
@@ -312,7 +306,6 @@ body {
   margin-top: 5px;
   line-height: 1.5;
 }
-
 #mensagem {
   margin-top: 30px;
   font-size: 14px;
@@ -328,7 +321,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 #mensagem::before {
     content: '';
     position: absolute;
@@ -345,7 +337,6 @@ body {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
 #mensagem strong {
   color: #fff;
   font-weight: 700;
@@ -355,7 +346,6 @@ body {
     font-size: 18px;
     margin-left: 5px;
 }
-
 .floating-heart {
   position: fixed;
   color: #5d5d8e;
@@ -366,7 +356,6 @@ body {
   pointer-events: none;
   text-shadow: 0 0 8px rgba(93, 93, 142, 0.5);
 }
-
 @keyframes floatUp {
   0% {
     transform: translateY(0) scale(1);
