@@ -19,21 +19,35 @@
   <div id="conteudo">
     
     <div class="music-player">
-        <div class="song-bar">
-            <div class="song-infos">
-                <div class="image-container">
-                    <img src="https://i.imgur.com/33if2wP.jpeg" alt="Capa do Álbum" />
-                </div>
-                <div class="song-description">
-                    <p class="title">Partilhar</p>
-                    <p class="artist">Rubel</p>
-                </div>
-            </div>
-            <div class="icons">
-                <i class="far fa-heart"></i>
-                <i class="fas fa-compress"></i>
-            </div>
-        </div>
+  <div class="album-cover">
+    <img id="album-art" src="https://i.scdn.co/image/ab67616d0000b27366506880685cafc28f22e743" alt="Capa do Álbum" />
+  </div>
+
+  <div class="song-info">
+    <h3 class="song-title">Partilhar</h3>
+    <p class="song-artist">Rubel</p>
+  </div>
+
+  <div class="controls">
+    <i class="fas fa-backward step-back"></i>
+    <i class="fas fa-play play-pause"></i>
+    <i class="fas fa-forward step-next"></i>
+  </div>
+
+  <div class="progress-area">
+    <span class="current-time">0:00</span>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <span class="total-time">0:00</span>
+  </div>
+
+  <div class="volume-control">
+    <i class="fas fa-volume-low"></i>
+    <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+  </div>
+</div>
+
         <div class="progress-controller">
             <div class="control-buttons">
                 <i class="fas fa-random"></i>
